@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import AdminTemplate from './page/AdminTemplate';
+import DashBoard from './page/AdminTemplate/DashBoard';
+import AddUser from './page/AdminTemplate/AddUser';
+import HomeTemplate from './page/HomeTemplate';
+import HomePage from './page/HomeTemplate/Homepage';
+import AboutPage from './page/HomeTemplate/AboutPage';
+import ListMoviePage from './page/HomeTemplate/ListMoviePage';
+import renderRoutes from './routes';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter> 
+      <Routes>
+        {renderRoutes()}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
