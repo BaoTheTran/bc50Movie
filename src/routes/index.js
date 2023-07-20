@@ -16,6 +16,8 @@ const routes =[
             {path:"", element:lazy(()=> import("../page/HomeTemplate/Homepage"))},
             {path:"about", element:lazy(()=> import("../page/HomeTemplate/AboutPage"))},
             {path:"list-movie", element:lazy(()=> import("../page/HomeTemplate/ListMoviePage"))},
+
+            {path:"hooks", element:lazy(()=> import("../page/HomeTemplate/HooksPage"))},
         ]
     },
 
