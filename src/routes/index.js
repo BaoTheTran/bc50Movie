@@ -8,6 +8,7 @@
 import {Route} from "react-router-dom";
 import {lazy} from "react";
 
+
 const routes =[
     {
         path: "",
@@ -18,6 +19,7 @@ const routes =[
             {path:"list-movie", element:lazy(()=> import("../page/HomeTemplate/ListMoviePage"))},
 
             {path:"hooks", element:lazy(()=> import("../page/HomeTemplate/HooksPage"))},
+            {path:"detail/:id", element:lazy(()=> import("../page/HomeTemplate/detailMovie"))},
         ]
     },
 

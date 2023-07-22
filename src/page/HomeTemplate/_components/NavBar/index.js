@@ -23,6 +23,7 @@ export default class NavBar extends Component {
       <li className="nav-item">
         <NavLink className={({isActive})=>isActive ? "my-active nav-link" : "nav-link"} to="/hooks">Hooks</NavLink>
       </li>
+      
     </ul>
   </div>
 </nav>
