@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from "react";
+import Child from "./child";
+import CustomHoooks from "./custom-hooks";
 
 //khi state chạy lại thì tất cả function này đều chạy lại hết.
 export default function HooksPage() {
@@ -50,6 +52,22 @@ export default function HooksPage() {
   const renderNotiCallBack =useCallback(renderNoti,[]);
 
   return (
-    <div>HooksPage</div>
+    <div>
+    <h3>Number: {number}</h3>
+    <h3>Number Up: {countUpMemo}</h3>
+    <button
+      className="btn btn-success"
+      onClick={() => {
+        setNumber(number + 1);
+      }}
+    >
+      Click
+    </button>
+
+    <hr />
+    <Child renderNoti={renderNotiCallBack} />
+    <hr />
+    <CustomHoooks />
+  </div>
   )
 }
