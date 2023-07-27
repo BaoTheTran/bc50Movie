@@ -10,21 +10,21 @@ const detailMovieReducer=(state =initialState,action )=>{
     switch (action.type) {
         case DETAIL_MOVIE_REQUEST:{
             state.loading = true;
-            state.data = null,
+            state.data = null;
             state.error = null;
             return {...state}
         }
 
         case DETAIL_MOVIE_SUCCESS:{
             state.loading = false;
-            state.data = action.payload,
+            state.data = action.payload;
             state.error = null;
             return {...state}
         }
 
         case DETAIL_MOVIE_FAIL:{
             state.loading = false;
-            state.data = null,
+            state.data = null;
             state.error = action.payload;
             return {...state}
         }

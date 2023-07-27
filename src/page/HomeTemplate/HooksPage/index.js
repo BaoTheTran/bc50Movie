@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Child from "./child";
-import CustomHoooks from "./custom-hooks";
+import CustomHooks from "./customHooks";
 
 //khi state chạy lại thì tất cả function này đều chạy lại hết.
 export default function HooksPage() {
@@ -67,7 +67,7 @@ export default function HooksPage() {
     <hr />
     <Child renderNoti={renderNotiCallBack} />
     <hr />
-    <CustomHoooks />
+    <CustomHooks />
   </div>
   )
 }

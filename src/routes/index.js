@@ -28,9 +28,10 @@ const routes =[
         element: lazy(()=> import("../page/AdminTemplate")),
         nested: [
             {path:"dashboard", element:lazy(()=> import("../page/AdminTemplate/DashBoard"))},
-            {path:"add-user", element:lazy(()=> import("../page/AdminTemplate/AddUser") )},
+            {path:"add-user", element:lazy(()=> import("../page/AdminTemplate/AddUser") )},          
         ],
     },
+    {path:"auth", element:lazy(()=> import("../page/AdminTemplate/AuthPage") )},
 ];
 
  const renderRoutes = ()=>{
