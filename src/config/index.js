@@ -16,7 +16,7 @@ const config = {
         ...Development,
     },
 
-    productiom:{
+    production:{
         ...Production,
     },
 };

@@ -22,6 +22,7 @@ const onChange = (date, dateString) => {
 export default function HomePage() {
   return (
     <Wrapper>
+      {process.env.NODE_ENV}
       <Title>Hello Bao</Title>
       <Loader/>
       <Button type="primary" danger>Primary</Button>
