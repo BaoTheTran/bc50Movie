@@ -1,6 +1,7 @@
 import { LIST_MOVIE_REQUEST ,LIST_MOVIE_SUCCESS,LIST_MOVIE_FAIL} from "./constants";
 import api from "../../../../utils/apiUtils";
 
+
 //call api
 export const actFetchListMovie=()=>{
     return(dispatch)=>{

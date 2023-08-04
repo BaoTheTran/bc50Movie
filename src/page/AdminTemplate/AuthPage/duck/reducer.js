@@ -1,4 +1,4 @@
-import { ADMIN_REQUEST,ADMIN_SUCCESS,ADMIN_FAIL } from "./constants";
+import { ADMIN_REQUEST,ADMIN_SUCCESS,ADMIN_FAIL ,ADMIN_LOGOUT} from "./constants";
 
 const initialState={
     loading: false,
@@ -26,6 +26,13 @@ export const adminReducer=(state=initialState,action)=>{
             state.loading= false;
             state.data= null;
             state.error= action.payload;
+            return{...state}
+        }
+
+        case ADMIN_LOGOUT:{
+            state.loading= false;
+            state.data= null;
+            state.error= null;
             return{...state}
         }
             

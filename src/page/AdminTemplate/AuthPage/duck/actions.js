@@ -1,6 +1,8 @@
-import { ADMIN_REQUEST,ADMIN_SUCCESS,ADMIN_FAIL } from "./constants";
+import { ADMIN_REQUEST,ADMIN_SUCCESS,ADMIN_FAIL,ADMIN_LOGOUT } from "./constants";
 import api from "../../../../utils/apiUtils";
 
+//giả sử BE trả thời gian timeout
+const exp = 60*60*1000;
 
 //call api
 export const actFetchAdmin =(user,navigate)=>{
@@ -26,6 +28,16 @@ export const actFetchAdmin =(user,navigate)=>{
                     //đưa xuống catch
                     return Promise.reject(error)
                 }
+
+                //tính thời gian hết phiên đăng nhập trong tương lai
+                const currentTime = new Date().getTime();
+                const futureTime = currentTime + exp;
+
+                //setLocalStorage exp 
+                localStorage.setItem("futureTime", futureTime)
+
+                //dispatch action timeOut logOut
+                dispatch(actTimeOutLogOut(exp,navigate))
                 
                 //QuanTri => Tra ve thong tin nguoi dung
                 dispatch(actAdminSuccess(user));
@@ -44,6 +56,53 @@ export const actFetchAdmin =(user,navigate)=>{
         })
     };
 };
+
+//log Out
+export const actLogOut =(navigate)=>{
+    //remove localStorage
+    localStorage.removeItem("UserAdmin");
+    localStorage.removeItem("futureTime");
+    //redirect /auth
+    navigate("/auth", {replace: true});
+    //clear auth Reducer
+    return{
+        type : ADMIN_LOGOUT,
+    }
+}
+
+const actTimeOutLogOut =(futureTime,navigate)=>{
+    return(dispatch)=>{
+        setTimeout(()=>{
+            dispatch(actLogOut(navigate));
+        },futureTime)
+    }
+}
+
+export const actTryLogin = (navigate)=>{
+    return(dispatch)=>{
+        const user = JSON.parse(localStorage.getItem("UserAdmin"));
+
+        //nếu user không tồn tại thì return cho code dừng lại ngay lúc này.
+        if(!user) return;
+
+        const futureTime = localStorage.getItem("futureTime");
+        const currentTime = new Date().getTime();
+
+        console.log(futureTime);
+        console.log(currentTime);
+
+        if(currentTime > futureTime){
+            //log out 
+            dispatch(actLogOut(navigate))
+            return;
+        }
+
+        //set timeout
+        dispatch(actTimeOutLogOut(futureTime -currentTime ,navigate ));
+        dispatch(actAdminSuccess(user))
+
+    };
+}
 
 
 const actAdminRequest=()=>{

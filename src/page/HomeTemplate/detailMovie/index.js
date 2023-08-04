@@ -5,7 +5,8 @@ import { useSelector , useDispatch} from 'react-redux';
 import {useParams} from "react-router-dom";
 //day la hooks cua react-router-dom, ko phai cua reactjs
 import { actFetchDetailMovie } from './duck/actions';
-import Loader from '../../../components_global/loader';
+import Loader from '../../../components_global/loaderWaiting';
+// import Loader from "components/loaderWaiting";
 
 function DetailMovie(props) {
     const params = useParams();

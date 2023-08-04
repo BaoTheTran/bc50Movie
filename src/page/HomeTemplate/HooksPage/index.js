@@ -56,7 +56,7 @@ export default function HooksPage() {
     <h3>Number: {number}</h3>
     <h3>Number Up: {countUpMemo}</h3>
     <button
-      className="btn btn-success"
+      className="btn btn-my-custom"
       onClick={() => {
         setNumber(number + 1);
       }}
